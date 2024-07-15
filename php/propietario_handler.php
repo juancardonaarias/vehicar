@@ -1,6 +1,7 @@
 <?php
 require_once('../config/conexion.php');
-require_once('../classes/Propietario.php');
+require_once('../classes/propietario.php');
+
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nombre = $_POST['nombre_propietario'];
@@ -12,8 +13,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $propietario->telefono = $telefono;
     $propietario->emailPropietario = $email;
 
-    if ($propietario->agregarPropietario($conexion)) {
-        echo json_encode(['success' => true, 'message' => 'Propietario registrado correctamente.']);
+    if ($propietario->agregarPropietario($conn)) {
+       // Redirigir antes de cualquier salida
+       header("Location: index.html?mensaje=guardado");
+       die();
     } else {
         echo json_encode(['success' => false, 'message' => 'Error al registrar el propietario.']);
     }

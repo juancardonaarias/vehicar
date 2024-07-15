@@ -8,12 +8,13 @@ class Vehiculo
     public $placaVehiculo = null;
     public $marcaVehiculo = null;
     public $modeloVehiculo = null;
-    public $kilometraje = null;
+    public $idPropietario = null;
+   // public $kilometraje = null;
 
     public function ingresarVehiculo($conexion)
     {
-        $stmt = $conexion->prepare("INSERT INTO vehiculo (placa, marca, modelo, kilometraje) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("sssi", $this->placaVehiculo, $this->marcaVehiculo, $this->modeloVehiculo, $this->kilometraje);
+        $stmt = $conexion->prepare("INSERT INTO vehiculo (marca_vehiculo,modelo_vehiculo,placa_vehiculo,id_propietario) VALUES (?, ?, ?,?)");
+        $stmt->bind_param("sssi", $this->marcaVehiculo, $this->modeloVehiculo, $this->placaVehiculo,$this->idPropietario);
         return $stmt->execute();
     }
 

@@ -21,3 +21,9 @@ form {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+a:hover {
+    background-color: rgb(64, 92, 232);
+    border-radius: 4px;
+}
+
+

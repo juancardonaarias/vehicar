@@ -1,4 +1,7 @@
 <?php
+
+require_once('../classes/Usuario.php');
+
 class Propietario extends Usuario
 {
     public $idPropietario = null;
