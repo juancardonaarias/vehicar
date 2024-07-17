@@ -1,11 +1,12 @@
 <?php
 require_once '../config/conexion.php';
 
-$id_vehiculo = $_GET['id_vehiculo'];
+/*$id_vehiculo = $_GET['id_vehiculo'];
 
-$sql = "SELECT * FROM vehiculo WHERE id_vehiculo = ?";
+$sql = "SELECT * FROM vehiculo WHERE id_vehiculo = ?";*/
+$sql = "SELECT * FROM vehiculo";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $id_vehiculo);
+/*$stmt->bind_param("i", $id_vehiculo);*/
 $stmt->execute();
 $result = $stmt->get_result();
 
