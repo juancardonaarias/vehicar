@@ -4,7 +4,7 @@
 
      class Taller {
 
-            //public $idTaller = null;
+            public $idTaller = null;
             public $nombreTaller = null;
             public $direccionTaller = null;
            /* public $departamento = null;
@@ -13,8 +13,8 @@
 
             public registrarTaller($conexion) {
 
-                $stmt = $conexion->prepare("INSERT INTO taller (nombre_taller,direccion_taller) VALUES (?, ?)");
-                $stmt->bind_param("ss", $this->nombreTaller, $this->direccionTaller);
+                $stmt = $conexion->prepare("INSERT INTO taller (idTaller,nombre_taller,direccion_taller) VALUES (?, ?, ?)");
+                $stmt->bind_param("iss",$this->idTaller, $this->nombreTaller, $this->direccionTaller);
                 return $stmt->execute(); 
         
 
