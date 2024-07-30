@@ -1,4 +1,32 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Cargar opciones de departamentos
+    fetch('php/get_departamentos.php')
+        .then(response => response.json())
+        .then(data => {
+            const departamentoSelect = document.getElementById('id_departamento');
+            data.forEach(departamento => {
+                const option = document.createElement('option');
+                option.value = departamento.id_departamento;
+                option.textContent = departamento.nombre_departamento;
+                departamentoSelect.appendChild(option);
+            });
+        });
+
+
+    // Cargar opciones de ciudad
+    fetch('php/get_ciudades.php')
+        .then(response => response.json())
+        .then(data => {
+            const ciudadSelect = document.getElementById('id_ciudad');
+            data.forEach(ciudad => {
+                const option = document.createElement('option');
+                option.value = ciudad.id_ciudad;
+                option.textContent = ciudad.nombre_ciudad;
+                ciudadSelect.appendChild(option);
+            });
+        });
+
+    
     // Cargar opciones de propietarios
     fetch('php/get_propietarios.php')
         .then(response => response.json())
@@ -27,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Manejar las opciones dinamicas para el cargue de vehiculos en la interfaz mantenimiento
     
-    fetch('php/get_vehiculos.php')
+    /*fetch('php/get_vehiculos.php')
         .then(response => response.json())
         .then(data => {
             const vehiculoSelect = document.getElementById('vehiculos_en_mantenimiento');
@@ -38,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 vehiculoSelect.appendChild(option);
             });
         });
-    
+    */
 
     // Manejar la navegación entre secciones del formulario
     const navLinks = document.querySelectorAll('.nav-link');

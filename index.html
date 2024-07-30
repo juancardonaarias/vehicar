@@ -91,23 +91,19 @@
                         <label for="direccion_taller" class="form-label">Direccion Taller:</label>
                         <input type="text" class="form-control" id="direccion_taller" name="direccion_taller" required>
                     </div>
+                    
+                   
                     <div class="mb-3">
-                        <label for="departamento_taller" class="form-label">Departamento:</label>
-                        <select class="form-select" name="departamento" id="departamento_taller">
-                            <option value="1">Quindio</option>
-                            <option value="2">Risaralda</option>
-                            <option value="3">Caldas</option>
+                        <label for="id_departamento" class="form-label">Seleccione Departamento:</label>
+                        <select id="id_departamento" name="id_departamento" class="form-select" required>
+                            <!-- Opciones de departamento cargadas dinámicamente -->
                         </select>
                     </div>
+
                     <div class="mb-3">
-                        <label for="ciudad_taller" class="form-label">Ciudad:</label>
-                        <select class="form-select" name="ciudad" id="ciudad_taller">
-                            <option value="1">Armenia</option>
-                            <option value="2">Calarca</option>
-                            <option value="3">Montenegro</option>
-                            <option value="4">Quimbaya</option>
-                            <option value="5">Filandia</option>
-                            <option value="6">Salento</option>
+                        <label for="id_ciudad" class="form-label">Seleccione Ciudad:</label>
+                        <select class="form-select" name="id_ciudad" id="id_ciudad">
+                            <!-- Opciones de ciudad cargadas dinámicamente -->
                         </select>
                     </div>
                     <button type="submit" class="btn btn-primary">Guardar</button>
