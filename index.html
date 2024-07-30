@@ -82,7 +82,7 @@
             <h2>Registrar Taller</h2>
             <!-- Formulario de Taller -->
             <div class="container mt-5">
-                <form>
+                <form id="taller-form" method="POST" action="php/taller_handler.php">
                     <div class="mb-3">
                         <label for="nombre_taller" class="form-label">Nombre Taller:</label>
                         <input type="text" class="form-control" id="nombre_taller" name="nombre_taller" required>
@@ -177,13 +177,18 @@
             <h2>Registrar Mantenimiento</h2>
             <!-- Formulario de Mantenimiento -->
             <div class="container mt-5">
-                <form>
+                <form id="mantenimiento-form" action="php/mantenimiento_handler.php"  method="POST">
+                    
+                 
                     <div class="mb-3">
-                        <label for="vehiculo_mantenimiento" class="form-label">Vehículo:</label>
-                        <select class="form-select" id="vehiculo_mantenimiento" name="vehiculo_mantenimiento" required>
+                        <label for="vehiculos_en_mantenimiento" class="form-label">Vehículo:</label>
+                        <select class="form-select" id="vehiculos_en_mantenimiento" name="vehiculos_en_mantenimiento" required>
                             <!-- Opciones de vehículos -->
                         </select>
                     </div>
+                
+
+
                     <div class="mb-3">
                         <label for="mecanico_mantenimiento" class="form-label">Mecánico:</label>
                         <select class="form-select" id="mecanico_mantenimiento" name="mecanico_mantenimiento" required>

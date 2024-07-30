@@ -1,7 +1,7 @@
 <?php
 require_once '../config/conexion.php';
 
-$sql = "SELECT id_vehiculo, marca_vehiculo FROM vehiculo";
+$sql = "SELECT id_vehiculo, placa_vehiculo FROM vehiculo";
 $result = $conn->query($sql);
 
 $vehiculos = [];

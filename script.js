@@ -12,20 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-    // Cargar opciones de propietarios formulario de reportes
-
-    fetch('php/get_propietarios.php')
-        .then(response => response.json())
-        .then(data => {
-            const propietarioSelect = document.getElementById('id_propietario_1');
-            data.forEach(propietario => {
-                const option = document.createElement('option');
-                option.value = propietario.id_propietario;
-                option.textContent = propietario.nombre_propietario;
-                propietarioSelect.appendChild(option);
-            });
-        });
-
     // Cargar opciones de vehículos
     fetch('php/get_vehiculos.php')
         .then(response => response.json())
@@ -34,10 +20,25 @@ document.addEventListener('DOMContentLoaded', () => {
             data.forEach(vehiculo => {
                 const option = document.createElement('option');
                 option.value = vehiculo.id_vehiculo;
+                option.textContent = vehiculo.placa_vehiculo;
+                vehiculoSelect.appendChild(option);
+            });
+        });
+
+    // Manejar las opciones dinamicas para el cargue de vehiculos en la interfaz mantenimiento
+    
+    fetch('php/get_vehiculos.php')
+        .then(response => response.json())
+        .then(data => {
+            const vehiculoSelect = document.getElementById('vehiculos_en_mantenimiento');
+            data.forEach(vehiculo => {
+                const option = document.createElement('option');
+                option.value = vehiculo.id_vehiculo;
                 option.textContent = `${vehiculo.marca} ${vehiculo.modelo}`;
                 vehiculoSelect.appendChild(option);
             });
         });
+    
 
     // Manejar la navegación entre secciones del formulario
     const navLinks = document.querySelectorAll('.nav-link');

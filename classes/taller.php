@@ -4,23 +4,23 @@
 
      class Taller {
 
-            public $idTaller = null;
+            
             public $nombreTaller = null;
             public $direccionTaller = null;
-           /* public $departamento = null;
-            public $ciudad = null; */
+            public $id_ciudad = null;
+            public $id_departamento = null;
+           
 
-
-            public registrarTaller($conexion) {
-
-                $stmt = $conexion->prepare("INSERT INTO taller (idTaller,nombre_taller,direccion_taller) VALUES (?, ?, ?)");
-                $stmt->bind_param("iss",$this->idTaller, $this->nombreTaller, $this->direccionTaller);
+            public function registrarTaller($conn) {
+                $sql = "INSERT INTO taller (nombre_taller,direccion_taller,id_ciudad,id_departamento) VALUES (?,?,?,?)";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("ssii",$this->nombreTaller, $this->direccionTaller,$this->id_ciudad,$this->id_departamento);
                 return $stmt->execute(); 
         
 
             }
 
-            public consultarTaller($conexion) {
+            public function consultarTaller($conn) {
             
                 $stmt = $conexion->prepare("SELECT * FROM taller");
                 $stmt->execute();
