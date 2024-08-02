@@ -5,8 +5,8 @@ require_once('../classes/taller.php');
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nombreTaller = $_POST['nombre_taller'];
     $direccionTaller = $_POST['direccion_taller'];
-    $id_departamento = $_POST['departamento'];
-    $id_ciudad = $_POST['ciudad'];
+    $id_departamento = $_POST['id_departamento'];
+    $id_ciudad = $_POST['id_ciudad'];
   
     
 
