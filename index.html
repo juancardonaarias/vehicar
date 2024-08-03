@@ -120,10 +120,20 @@
                         <label for="nombre_repuesto" class="form-label">Nombre Repuesto:</label>
                         <input type="text" class="form-control" id="nombre_repuesto" name="nombre_repuesto" required>
                     </div>
+                    
                     <div class="mb-3">
                         <label for="descripcion_repuesto" class="form-label">Descripcion Repuesto:</label>
                         <input type="text" class="form-control" id="descripcion_repuesto" name="descripcion_repuesto" required>
                     </div>
+
+                    <div class="mb-3">
+                        <label for="id_tiporepuesto" class="form-label">Seleccione Tipo Repuesto:</label>
+                        <select id="id_tiporepuesto" name="id_tiporepuesto"  class="form-select"  required>
+                            <!-- Opciones de tipo cargadas dinámicamente -->
+                        </select>
+                    </div>
+                    
+
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </form>
                 <div id="response-message" class="mt-3"></div>

@@ -1,4 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Cargar opciones de tipo de taller
+    fetch('php/get_tiporepuesto.php')
+        .then(response => response.json())
+        .then(data => {
+            const tiporepuestoSelect = document.getElementById('id_tiporepuesto');
+            data.forEach(tiporepuesto => {
+                const option = document.createElement('option');
+                option.value = tiporepuesto.id_tipo;
+                option.textContent = tiporepuesto.tipo;
+                tiporepuestoSelect.appendChild(option);
+            });
+        });
+
+    
     // Cargar opciones de departamentos
     fetch('php/get_departamentos.php')
         .then(response => response.json())
