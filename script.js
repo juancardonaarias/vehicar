@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Cargar opciones de tipo de taller
+   // Cargar opciones de tipo de repuesto
     fetch('php/get_tiporepuesto.php')
         .then(response => response.json())
         .then(data => {
@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 tiporepuestoSelect.appendChild(option);
             });
         });
+
 
     
     // Cargar opciones de departamentos
