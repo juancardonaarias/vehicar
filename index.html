@@ -67,7 +67,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="id_propietario" class="form-label">Seleccione Propietario:</label>
-                        <select id="id_propietario" name="id_propietario" class="form-select" required>
+                        <select class="form-select" id="id_propietario" name="id_propietario"  required>
                             <!-- Opciones de propietarios cargadas dinámicamente -->
                         </select>
                     </div>
@@ -115,7 +115,7 @@
             <h2>Registrar Repuesto</h2>
             <!-- Formulario de Repuesto -->
             <div class="container mt-5">
-                <form>
+                <form id="repuesto-form" method="POST" action="php/repuesto_handler.php">
                     <div class="mb-3">
                         <label for="nombre_repuesto" class="form-label">Nombre Repuesto:</label>
                         <input type="text" class="form-control" id="nombre_repuesto" name="nombre_repuesto" required>
@@ -165,15 +165,24 @@
             <h2>Registrar Mecánico</h2>
             <!-- Formulario de Mecánico -->
             <div class="container mt-5">
-                <form>
+                <form id="mecanico-form" method="POST" action="php/mecanico_handler.php">
                     <div class="mb-3">
                         <label for="nombre_mecanico" class="form-label">Nombre Mecanico:</label>
                         <input type="text" class="form-control" id="nombre_mecanico" name="nombre_mecanico" required>
                     </div>
+                    
                     <div class="mb-3">
                         <label for="telefono_mecanico" class="form-label">Teléfono Mecanico:</label>
                         <input type="tel" class="form-control" id="telefono_mecanico" name="telefono_mecanico" required>
                     </div>
+
+                    <div class="mb-3">
+                        <label for="id_taller" class="form-label">Seleccione Taller:</label>
+                        <select id="id_taller" name="id_taller"  class="form-select"  required>
+                            <!-- Opciones de ciudad cargadas dinámicamente -->
+                        </select>
+                    </div>
+
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </form>
                 <div id="response-message" class="mt-3"></div>
@@ -187,8 +196,8 @@
                     
                  
                     <div class="mb-3">
-                        <label for="vehiculos_en_mantenimiento" class="form-label">Vehículo:</label>
-                        <select class="form-select" id="vehiculos_en_mantenimiento" name="vehiculos_en_mantenimiento" required>
+                        <label for="carros" class="form-label">Vehículo:</label>
+                        <select id="carros" name="carros" class="form-select" required>
                             <!-- Opciones de vehículos -->
                         </select>
                     </div>
@@ -196,17 +205,26 @@
 
 
                     <div class="mb-3">
-                        <label for="mecanico_mantenimiento" class="form-label">Mecánico:</label>
-                        <select class="form-select" id="mecanico_mantenimiento" name="mecanico_mantenimiento" required>
+                        <label for="mecanico1" class="form-label">Mecánico:</label>
+                        <select id="mecanico1" name="mecanico1" class="form-select" required>
                             <!-- Opciones de mecánicos -->
                         </select>
                     </div>
+
                     <div class="mb-3">
                         <label for="repuesto_mantenimiento" class="form-label">Repuesto:</label>
                         <select class="form-select" id="repuesto_mantenimiento" name="repuesto_mantenimiento" required>
                             <!-- Opciones de repuestos -->
                         </select>
                     </div>
+
+                    <div class="mb-3">
+                        <label for="tipo_mantenimiento" class="form-label">Tipo Mantenimiento:</label>
+                        <select class="form-select" id="tipo_mantenimiento" name="tipo_mantenimiento" required>
+                            <!-- Opciones de repuestos -->
+                        </select>
+                    </div>
+
                     <div class="mb-3">
                         <label for="fecha_mantenimiento" class="form-label">Fecha de Mantenimiento:</label>
                         <input type="date" class="form-control" id="fecha_mantenimiento" name="fecha_mantenimiento" required>
