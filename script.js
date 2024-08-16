@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
          });
      });
 
-    // Cargar opciones de tipo de repuesto
+   /* // Cargar opciones de tipo de repuesto
     fetch('php/get_tiporepuesto.php')
         .then(response => response.json())
         .then(data => {
@@ -98,6 +98,40 @@ fetch('php/get_ciudades.php')
             tipomantenimientoSelect.appendChild(option);
         });
     });
+
+    // Manejar las opciones dinamicas para el cargue de vehiculos en la 
+    // interfaz mantenimiento
+    
+   fetch('php/get_vehiculos.php')
+   .then(response => response.json())
+   .then(data => {
+       const vehiculoSelect = document.getElementById('vehiculo');
+       data.forEach(vehiculo => {
+           const option = document.createElement('option');
+           option.value = vehiculo.id_vehiculo;
+           option.textContent = vehiculo.placa_vehiculo;
+           vehiculoSelect.appendChild(option);
+       }); 
+   });
+
+   //Cargar opciones de mecanico */
+  
+   // Cargar opciones de mecánico
+fetch('php/get_mecanicos.php')
+.then(response => response.json()) // Corrección de 'reponse' a 'response'
+.then(data => {
+   const mecanicosSelect = document.getElementById('mecanico_form_mant');
+   data.forEach(mecanico => {
+     const option = document.createElement('option');
+     option.value = mecanico.id_mecanico;
+     option.textContent = mecanico.nombre_mecanico;
+     mecanicosSelect.appendChild(option);
+   });
+})
+.catch(error => {
+   console.error('Error al cargar los mecánicos:', error);
+});
+
 
 
 
