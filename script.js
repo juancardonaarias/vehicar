@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
          });
      });
 
-   /* // Cargar opciones de tipo de repuesto
+   // Cargar opciones de tipo de repuesto
     fetch('php/get_tiporepuesto.php')
         .then(response => response.json())
         .then(data => {
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 tiporepuestoSelect.appendChild(option);
             });
         });
-
+  
         // Cargar opciones de departamentos
     fetch('php/get_departamentos.php')
     .then(response => response.json())
@@ -57,6 +57,8 @@ fetch('php/get_ciudades.php')
             ciudadSelect.appendChild(option);
         });
     });
+
+
 
     // cargar opciones de taller
     fetch('php/get_taller.php')
@@ -86,6 +88,8 @@ fetch('php/get_ciudades.php')
         });
     });
 
+
+
     //Cargar opciones de tipo de mantenimiento
     fetch('php/get_tipomantenimiento.php')
     .then(response => response.json())
@@ -98,6 +102,7 @@ fetch('php/get_ciudades.php')
             tipomantenimientoSelect.appendChild(option);
         });
     });
+
 
     // Manejar las opciones dinamicas para el cargue de vehiculos en la 
     // interfaz mantenimiento
@@ -114,7 +119,9 @@ fetch('php/get_ciudades.php')
        }); 
    });
 
-   //Cargar opciones de mecanico */
+   //Cargar opciones de mecanico 
+   
+   
   
    // Cargar opciones de mecánico
 fetch('php/get_mecanicos.php')
