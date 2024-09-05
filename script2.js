@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
   
-  /*      // Cargar opciones de departamentos
+        // Cargar opciones de departamentos
     fetch('php/get_departamentos.php')
     .then(response => response.json())
     .then(data => {
@@ -114,7 +114,7 @@ fetch('php/get_ciudades.php')
        data.forEach(vehiculo => {
            const option = document.createElement('option');
            option.value = vehiculo.id_vehiculo;
-           option.textContent = vehiculo.placa_vehiculo;
+           option.textContent = vehiculo.placa;
            vehiculoSelect.appendChild(option);
        }); 
    });
@@ -158,3 +158,41 @@ fetch('php/get_mecanicos.php')
 
  });
  
+ function agregarRepuesto() {
+    const repuestoSelect = document.getElementById('repuesto_mant');
+    const opcionSeleccionada = repuestoSelect.options[repuestoSelect.selectedIndex];
+    const repuestoId = opcionSeleccionada.value;
+    const repuestoNombre = opcionSeleccionada.textContent;
+
+    const newItem = document.createElement('div');
+    newItem.classList.add('alert', 'alert-secondary', 'd-flex', 'justify-content-between', 'align-items-center', 'mb-2');
+    newItem.textContent = repuestoNombre;
+    newItem.dataset.idRepuesto = repuestoId; // Guardar el id_repuesto en un atributo de datos personalizado
+
+    const deleteButton = document.createElement('button');
+    deleteButton.classList.add('btn-close');
+    deleteButton.setAttribute('aria-label', 'Close');
+    deleteButton.onclick = function() {
+        newItem.remove();
+        actualizarListaRepuestos();
+    };
+
+    newItem.appendChild(deleteButton);
+
+    const listaRepuestos = repuestoSelect.parentElement.nextElementSibling;
+    listaRepuestos.appendChild(newItem);
+
+    actualizarListaRepuestos();
+}
+
+function actualizarListaRepuestos() {
+    const listaRepuestosDiv = document.querySelector('#repuesto_mant').parentElement.nextElementSibling;
+    const repuestosListaInput = document.getElementById('repuestos_lista');
+    const repuestos = [];
+
+    listaRepuestosDiv.querySelectorAll('.alert').forEach(function(item) {
+        repuestos.push(item.dataset.idRepuesto.trim()); // Obtener el id_repuesto desde el atributo de datos
+    });
+
+    repuestosListaInput.value = repuestos.join(',');
+}

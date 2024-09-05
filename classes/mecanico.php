@@ -1,7 +1,8 @@
 <?php
     error_reporting(E_ALL);
 
-    require_once('../classes/Usuario.php');
+    require_once(__DIR__ . '/../classes/usuario.php');
+
 
     class Mecanico extends Usuario {
 
@@ -31,7 +32,19 @@
                $stmt = $conexion->prepare("SELECT * FROM mecanico");
                $stmt->execute();
                return $stmt->get_result()->fetch_assoc();
+           }
 
+           public static function consultarIdTallerPorMecanicoId($conexion,$idMecanico){
+                $sql = "SELECT id_taller FROM mecanico WHERE id_mecanico = $idMecanico";
+                $result = $conexion->query($sql);
+        
+                if ($result->num_rows > 0) {
+                    $row = $result->fetch_assoc();
+                    return $row['id_taller']; 
+
+                } else {
+                    return null;
+                }
            }
 
     }

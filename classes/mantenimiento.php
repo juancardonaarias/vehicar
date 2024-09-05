@@ -6,19 +6,22 @@
            public $idMantenimiento = null;
            public $fecha_mantenimiento = null;
            public $descripcion = null;
+           public $id_taller = null;
+           public $id_tipomanto = null;
           
 
 
-           public registrarMantenimiento($conexion) {
+           public function registrarMantenimiento($conexion) {
 
-               $stmt = $conexion->prepare("INSERT INTO mantenimiento (id_mantenimiento,fecha_mantenimiento,descripcion_mantenimiento) VALUES (?, ?, ?)");
-               $stmt->bind_param("iss",$this->idMantenimiento, $this->fecha_mantenimiento, $this->descripcion);
-               return $stmt->execute(); 
-       
-
+               $stmt = $conexion->prepare("INSERT INTO mantenimiento (fecha_mantenimiento,descripcion,id_taller,id_tipomanto) VALUES (?, ?,?,?)");
+               $stmt->bind_param("ssii", $this->fecha_mantenimiento, $this->descripcion,$this->id_taller,$this->id_tipomanto);
+               if($stmt->execute()){
+                return $conexion->insert_id;
+               }
+               return null ; 
            }
 
-           public consultarMantenimiento($conexion) {
+           public function consultarMantenimiento($conexion) {
            
                $stmt = $conexion->prepare("SELECT * FROM mantenimiento");
                $stmt->execute();
