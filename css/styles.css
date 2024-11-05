@@ -1,0 +1,19 @@
+/* styles.css */
+.table {
+    width: 80%; 
+    margin: 0 auto; 
+}
+.table-bordered td, .table-bordered th {
+    border: 1px solid #ddd;
+}
+.thead-light th {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+}
+.container {
+    padding-top: 20px;
+}
+/* Centramos el texto de las celdas */
+td, th {
+    text-align: center; /* Estilo de centrado */
+}

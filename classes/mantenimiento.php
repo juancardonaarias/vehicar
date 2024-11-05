@@ -1,31 +1,43 @@
 <?php
-    error_reporting(E_ALL);
+class Mantenimiento {
+    public $id_vehiculo;
+    public $id_mecanico;
+    public $id_tipomanto;
+    public $fecha_mantenimiento;
+    public $descripcion;
+    public $kilometraje;
+    public $repuestos_lista; // Cadena de IDs de repuestos separados por comas
 
-    class Mantenimiento {
+    public function registrarMantenimiento($conn) {
+        // Inserta el mantenimiento en la tabla 'mantenimiento'
+        $stmt = $conn->prepare("INSERT INTO mantenimiento (id_vehiculo, id_mecanico, id_tipomanto, fecha_mantenimiento, descripcion, kilometraje) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("iiissi", $this->id_vehiculo, $this->id_mecanico, $this->id_tipomanto, $this->fecha_mantenimiento, $this->descripcion, $this->kilometraje);
 
-           public $idMantenimiento = null;
-           public $fecha_mantenimiento = null;
-           public $descripcion = null;
-          
+        if ($stmt->execute()) {
+            // Obtiene el ID del mantenimiento recién insertado
+            $mantenimiento_id = $stmt->insert_id;
 
+            // Verifica si hay repuestos en la lista y los inserta en la tabla intermedia
+            if (!empty($this->repuestos_lista)) {
+                // Convierte la lista de repuestos en un array
+                $repuestos = explode(',', $this->repuestos_lista);
 
-           public registrarMantenimiento($conexion) {
+                // Inserta cada repuesto en la tabla 'mantenimiento_repuesto'
+                foreach ($repuestos as $repuesto_id) {
+                    $stmt_repuesto = $conn->prepare("INSERT INTO mantenimiento_repuesto (id_mantenimiento, id_repuesto) VALUES (?, ?)");
+                    $stmt_repuesto->bind_param("ii", $mantenimiento_id, $repuesto_id);
+                    $stmt_repuesto->execute();
+                    $stmt_repuesto->close();
+                }
+            }
 
-               $stmt = $conexion->prepare("INSERT INTO mantenimiento (id_mantenimiento,fecha_mantenimiento,descripcion_mantenimiento) VALUES (?, ?, ?)");
-               $stmt->bind_param("iss",$this->idMantenimiento, $this->fecha_mantenimiento, $this->descripcion);
-               return $stmt->execute(); 
-       
+            $stmt->close();
+            return $mantenimiento_id; // Retorna el ID del mantenimiento registrado
+        }
 
-           }
-
-           public consultarMantenimiento($conexion) {
-           
-               $stmt = $conexion->prepare("SELECT * FROM mantenimiento");
-               $stmt->execute();
-               return $stmt->get_result()->fetch_assoc();
-
-           }
-
+        // Si falla la inserción, retorna null
+        $stmt->close();
+        return null;
     }
-
+}
 ?>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reporte Clientes del Taller</title>
+    <title>Información del Vehículo</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Enlace al archivo CSS externo -->
@@ -14,18 +14,11 @@
     <?php
 require_once '../config/conexion.php';
 
-// Obtener nombre del propietario del vehículo desde el parámetro GET
-$nombre_propietario = $_GET['nombre_propietario'];
+// Obtener la placa del vehículo desde el parámetro GET
+$placa_vehiculo = $_GET['placa_vehiculo'];
 
 // Consulta SQL para seleccionar el vehículo según la placa
-
-$sql = "SELECT p.id_propietario, p.nombre_propietario, p.telefono_propietario, 
-p.email_propietario, v.placa_vehiculo
-FROM `propietario` p 
-JOIN `vehiculo` v 
-ON p.id_propietario = v.id_propietario WHERE p.nombre_propietario = ?";
-
-/*$sql = "SELECT * FROM propietario WHERE id_propietario = ?";*/
+$sql = "SELECT * FROM vehiculo WHERE placa_vehiculo = ?";
 
 // Preparar la consulta
 $stmt = $conn->prepare($sql);
@@ -33,7 +26,7 @@ $stmt = $conn->prepare($sql);
 // Verificar si la preparación fue exitosa
 if ($stmt) {
     // Asignar el valor del parámetro a la consulta
-    $stmt->bind_param("s", $nombre_propietario); // "s" es para string
+    $stmt->bind_param("s", $placa_vehiculo); // "s" es para string
 
     // Ejecutar la consulta
     $stmt->execute();
@@ -47,15 +40,14 @@ if ($stmt) {
         echo '
         <div class="container mt-4 d-flex justify-content-center">
             <div class="table-responsive">
-                <h2 class="text-center mb-4">Información del Propietario</h2>
+                <h2 class="text-center mb-4">Información del Vehículo</h2>
                 <table class="table table-bordered text-center">
                     <thead class="thead-light">
                         <tr>
-                            <th>ID Propietario</th>
-                            <th>Nombre Propietario</th>
-                            <th>Telefono Propietario</th>
-                            <th>Email Propietario</th>
-                            <th>Placa Vehiculo<th>
+                            <th>ID Vehículo</th>
+                            <th>Marca</th>
+                            <th>Modelo</th>
+                            <th>Placa</th>
                         </tr>
                     </thead>
                     <tbody>';
@@ -64,15 +56,10 @@ if ($stmt) {
         while ($row = $result->fetch_assoc()) {
             echo '
             <tr>
-                <td>' . $row['id_propietario'] . '</td>
-                <td>' . $row['nombre_propietario'] . '</td>
-                <td>' . $row['telefono_propietario'] . '</td>
-                <td>' . $row['email_propietario'] . '</td>
-                <td>
-                  <a href="consulta_vehiculo.php?placa_vehiculo=' . urlencode($row['placa_vehiculo']) . '">
-                ' . $row['placa_vehiculo'] . '
-                  </a>
-                </td>
+                <td>' . $row['id_vehiculo'] . '</td>
+                <td>' . $row['marca_vehiculo'] . '</td>
+                <td>' . $row['modelo_vehiculo'] . '</td>
+                <td>' . $row['placa_vehiculo'] . '</td>
             </tr>';
         }
 
@@ -83,7 +70,7 @@ if ($stmt) {
             </div>
         </div>';
     } else {
-        echo '<div class="alert alert-warning text-center">No se encontró ningún propietario con ese id.</div>';
+        echo '<div class="alert alert-warning text-center">No se encontró ningún vehículo con esa placa.</div>';
     }
     
     // Cerrar la declaración
@@ -97,3 +84,4 @@ $conn->close();
 ?>
 </body>
 </html>
+
