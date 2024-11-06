@@ -1,4 +1,5 @@
 <?php
+/*   */
 // db.php
 $servername = "localhost";
 $username = "root";
