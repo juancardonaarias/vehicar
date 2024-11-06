@@ -1,5 +1,5 @@
 <?php
-include 'config/conexion_local.php'; // Incluye el archivo de conexión a la base de datos
+include 'config/conexion.php'; // Incluye el archivo de conexión a la base de datos
 
 session_start();
 
@@ -23,9 +23,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Redirigir a la página del menú según el tipo de usuario
         if ($usuario['tipo_usuario'] == 'mecanico') {
-            header("Location: index.html");
+            header("Location: menu.html");
         } else {
-            header("Location: index.html");
+            header("Location: menu.html");
         }
     } else {
         echo "Correo o contraseña incorrectos.";
