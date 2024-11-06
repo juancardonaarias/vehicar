@@ -1,5 +1,5 @@
 <?php
-include 'config/conexion.php'; // Incluye el archivo de conexión a la base de datos
+include 'config/conexion_local.php'; // Incluye el archivo de conexión a la base de datos
 
 session_start();
 
