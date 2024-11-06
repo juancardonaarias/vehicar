@@ -1,6 +1,6 @@
 <?php
 
-require_once('../classes/Usuario.php');
+require_once('..proyecto_mecanicapp/classes/Usuario.php');
 
 class Propietario extends Usuario
 {
