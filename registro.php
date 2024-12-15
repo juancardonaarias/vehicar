@@ -17,11 +17,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $mecanico->email = $email;
         $mecanico->contrasena = $contrasena;
         if ($mecanico->registrarMecanico($conn)) {
-            echo "Mecánico registrado con éxito.";
-            header("Location: registro.html");
+            echo "<script>
+                    alert('Mecánico registrado con éxito.');
+                    window.location.href = 'login.html';
+                  </script>";
         } else {
-            echo "Error al registrar mecánico.";
-           // header("Location: menu.html");
+            echo "<script>
+                    alert('Error al registrar mecánico. Inténtalo nuevamente.');
+                    window.location.href = 'registro.html';
+                  </script>";
         }
     } elseif ($tipo === "cliente") {
         $propietario = new Propietario();
@@ -30,21 +34,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $propietario->email = $email;
         $propietario->contrasena = $contrasena;
         if ($propietario->agregarPropietario($conn)) {
-           "<script>
-                alert('Cliente registrado con éxito.');
-                window.location.href = 'login.html';
-            </script>";
+            echo "<script>
+                    alert('Cliente registrado con éxito.');
+                    window.location.href = 'login.html';
+                  </script>";
         } else {
-           "<script>
+            echo "<script>
                     alert('Error al registrar el cliente. Inténtalo nuevamente.');
                     window.location.href = 'registro.html';
-            </script>";
+                  </script>";
         }
     } else {
-        "<script>
+        echo "<script>
                 alert('Tipo de usuario inválido.');
                 window.location.href = 'registro.html';
-        </script>";
+              </script>";
     }
     $conn->close();
 }
