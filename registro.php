@@ -30,14 +30,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $propietario->email = $email;
         $propietario->contrasena = $contrasena;
         if ($propietario->agregarPropietario($conn)) {
-            echo "Cliente registrado con éxito.";
-            header("Location: registro.html");
+           "<script>
+                alert('Cliente registrado con éxito.');
+                window.location.href = 'login.html';
+            </script>";
         } else {
-            echo "Error al registrar el cliente.";
-           // header("Location: menu.html");
+           "<script>
+                    alert('Error al registrar el cliente. Inténtalo nuevamente.');
+                    window.location.href = 'registro.html';
+            </script>";
         }
     } else {
-        echo "Tipo de usuario inválido.";
+        "<script>
+                alert('Tipo de usuario inválido.');
+                window.location.href = 'registro.html';
+        </script>";
     }
     $conn->close();
 }
