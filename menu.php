@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+// Redirigir al inicio de sesión si no hay una sesión activa.
+if (!isset($_SESSION['tipo_usuario'])) {
+    header('Location: login.php');
+    exit;
+}
+
+$tipoUsuario = $_SESSION['tipo_usuario'];
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,7 +18,7 @@
     <title>Mantenimiento de Vehículos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-        <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -17,9 +29,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
+				<?php if($tipoUsuario === 'mecanico'):?>
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-section="propietario-form">Cliente</a>
                     </li>
+				<?php endif; ?>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#" data-section="vehiculo-form">Vehículo</a>
                     </li>
@@ -38,8 +52,13 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-section="notificaciones-form">Notificaciones</a>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-section="reportes-form">Reportes y Consultas</a>
+                    </li>
+ 
+                    <li class="nav-item">
+                        <a class="nav-link text-danger" href="logout.php">Salir</a>
                     </li>
                 </ul>
             </div>

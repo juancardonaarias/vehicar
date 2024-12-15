@@ -4,33 +4,31 @@ include 'config/conexion.php'; // Incluye el archivo de conexión a la base de d
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
     $email = $_POST['email'];
-    $contrasena = $_POST['contrasena']; 
+    $contrasena = $_POST['contrasena'];
 
-
-
-    $sql = "SELECT * FROM usuarios WHERE email='$email'";
-    $resultado = mysqli_query($conn, $sql);
-    $usuario = mysqli_fetch_assoc($resultado);
-
-    echo json_encode( $usuario);
-
+    // Uso de consultas preparadas para evitar inyección SQL
+    $stmt = $conn->prepare("SELECT * FROM usuarios WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
+    $usuario = $resultado->fetch_assoc();
 
     if ($usuario && password_verify($contrasena, $usuario['contrasena'])) {
         $_SESSION['usuario'] = $usuario['nombre_usuario'];
         $_SESSION['tipo_usuario'] = $usuario['tipo_usuario'];
 
-        // Redirigir a la página del menú según el tipo de usuario
-        if ($usuario['tipo_usuario'] == 'mecanico') {
-            header("Location: menu.html");
-        } else {
-            header("Location: menu.html");
-        }
+        // Redirigir a la página del menú
+        header("Location: menu.php");
+        exit;
     } else {
         echo "Correo o contraseña incorrectos.";
     }
-    mysqli_close($conn);
 
+    $stmt->close();
+    $conn->close();
+} else {
+    echo "Método no permitido.";
 }
 ?>
+

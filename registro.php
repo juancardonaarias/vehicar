@@ -1,23 +1,44 @@
 <?php
-include 'config/conexion.php'; // Incluye el archivo de conexión a la base de datos
+include 'config/conexion.php';
+include 'classes/Propietario.php';
+include 'classes/Mecanico.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $tipo = $_POST['tipo'];
     $nombre = $_POST['nombre'];
     $email = $_POST['email'];
     $telefono = $_POST['telefono'];
-    $contrasena = password_hash($_POST['contrasena'], PASSWORD_DEFAULT); // Encripta la contraseña
+    $contrasena = password_hash($_POST['contrasena'], PASSWORD_DEFAULT);
 
-    // Inserta los datos en la base de datos
-    $sql = "INSERT INTO usuarios (nombre_usuario, email, telefono, tipo_usuario, contrasena)
-            VALUES ('$nombre', '$email', '$telefono', '$tipo', '$contrasena')";
-    
-    if (mysqli_query($conn, $sql)) {
-        echo "Usuario registrado con éxito";
-        header("Location: login.html"); // Redirige al inicio de sesión
+    if ($tipo === "mecanico") {
+        $mecanico = new Mecanico();
+        $mecanico->nombre_mecanico = $nombre;
+        $mecanico->telefono_mecanico = $telefono;
+        $mecanico->email = $email;
+        $mecanico->contrasena = $contrasena;
+        if ($mecanico->registrarMecanico($conn)) {
+            echo "Mecánico registrado con éxito.";
+            header("Location: registro.html");
+        } else {
+            echo "Error al registrar mecánico.";
+           // header("Location: menu.html");
+        }
+    } elseif ($tipo === "cliente") {
+        $propietario = new Propietario();
+        $propietario->nombre = $nombre;
+        $propietario->telefono = $telefono;
+        $propietario->email = $email;
+        $propietario->contrasena = $contrasena;
+        if ($propietario->agregarPropietario($conn)) {
+            echo "Cliente registrado con éxito.";
+            header("Location: registro.html");
+        } else {
+            echo "Error al registrar el cliente.";
+           // header("Location: menu.html");
+        }
     } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        echo "Tipo de usuario inválido.";
     }
-    mysqli_close($conn);
+    $conn->close();
 }
 ?>

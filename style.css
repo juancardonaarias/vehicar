@@ -26,6 +26,11 @@ a:hover {
     border-radius: 4px;
 }
 
+.nav-link.text-danger {
+    font-weight: bold;
+    color: red !important;
+}
+
 
 
 

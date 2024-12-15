@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Usuarios</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script>
+        function toggleTallerField() {
+            const tipoUsuario = document.querySelector('select[name="tipo"]').value;
+            const tallerField = document.getElementById('tallerField');
+            tallerField.style.display = tipoUsuario === 'mecanico' ? 'block' : 'none';
+        }
+    </script>
 </head>
 <body>
     <div class="container mt-5">
@@ -12,9 +19,9 @@
         <form action="registro.php" method="POST">
             <div class="form-group">
                 <label for="tipo">Tipo de Usuario</label>
-                <select name="tipo" class="form-control" required>
-                    <option value="mecanico">Mecánico</option>
+                <select name="tipo" class="form-control" onchange="toggleTallerField()" required>
                     <option value="cliente">Cliente</option>
+                    <option value="mecanico">Mecánico</option>
                 </select>
             </div>
 
@@ -37,6 +44,9 @@
                 <label for="contrasena">Contraseña</label>
                 <input type="password" name="contrasena" class="form-control" required>
             </div>
+
+            
+
             <button type="submit" class="btn btn-primary">Registrarse</button>
         </form>
     </div>
