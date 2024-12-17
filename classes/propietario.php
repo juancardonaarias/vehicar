@@ -1,6 +1,6 @@
 <?php
 
-require_once('classes/usuario.php');
+require_once('usuario.php');
 
 //require_once('..proyecto_mecanicapp/classes/Usuario.php');
 

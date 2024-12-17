@@ -33,7 +33,7 @@ $tipoUsuario = $_SESSION['tipo_usuario'];
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-section="propietario-form">Cliente</a>
                     </li>
-				<?php endif; ?>
+				<?php endif;?>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#" data-section="vehiculo-form">Vehículo</a>
                     </li>
@@ -58,7 +58,7 @@ $tipoUsuario = $_SESSION['tipo_usuario'];
                     </li>
  
                     <li class="nav-item">
-                        <a class="nav-link text-danger" href="logout.php">Salir</a>
+                        <a class="text-danger" href="logout.php">Salir</a>
                     </li>
                 </ul>
             </div>

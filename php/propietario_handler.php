@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $propietario = new Propietario();
     $propietario->nombre = $nombre;
     $propietario->telefono = $telefono;
-    $propietario->emailPropietario = $email;
+    $propietario->email = $email;
 
     if ($propietario->agregarPropietario($conn)) {
        // Redirigir antes de cualquier salida

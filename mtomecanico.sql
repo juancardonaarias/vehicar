@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-12-2024 a las 20:26:08
+-- Tiempo de generación: 17-12-2024 a las 03:14:08
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -125,7 +125,10 @@ CREATE TABLE `mecanico` (
 INSERT INTO `mecanico` (`id_mecanico`, `id_taller`, `id_usuario`) VALUES
 (18, NULL, 1),
 (19, NULL, 23),
-(20, NULL, 25);
+(20, NULL, 25),
+(21, NULL, 26),
+(22, NULL, 28),
+(23, NULL, 32);
 
 -- --------------------------------------------------------
 
@@ -161,7 +164,11 @@ INSERT INTO `propietario` (`id_propietario`, `id_usuario`) VALUES
 (25, 14),
 (26, 16),
 (27, 17),
-(28, 24);
+(28, 24),
+(29, 27),
+(30, 29),
+(31, 30),
+(32, 31);
 
 -- --------------------------------------------------------
 
@@ -269,7 +276,14 @@ INSERT INTO `usuarios` (`id_usuario`, `nombre_usuario`, `email`, `telefono`, `ti
 (22, 'Cesar Agusto Arango Bautista', 'cesara@gmail.com', '123456789', 'mecanico', '$2y$10$DmPdQjs2SQgFRfGF8.9Duep4/cehhg7yf20rVpqVEW01rPC8yiMwK'),
 (23, 'Rodolfo Hernandez', 'rodolfo@gmail.com', '1234567', 'mecanico', '$2y$10$0AWWbkPiV4EOhQag8oI0tu995Iug5JRIa.a0fKREEet8n58E5bHpS'),
 (24, 'Filemon Morales', 'filemon@misena.edu.co', '1234567', 'cliente', '$2y$10$PEmzvKl4yDA35tfdQMf8HuMqwJBnQuBL7NHpKdlgAqG9PlAfgnHia'),
-(25, 'Jason Bourne', 'jason@gmail.com', '1234567', 'mecanico', '$2y$10$b6lVQhkn6JV75wiNK61XvuR3z9app71bA5jcX6ymdO9x8/98kmGKa');
+(25, 'Jason Bourne', 'jason@gmail.com', '1234567', 'mecanico', '$2y$10$b6lVQhkn6JV75wiNK61XvuR3z9app71bA5jcX6ymdO9x8/98kmGKa'),
+(26, 'Ricardo Gutierrez', 'ricardogutierrez@gmail.com', '123456789', 'mecanico', '$2y$10$z..VMd3HY08fDrInr3UNm.qoqT7uTSC6iu.xkYXPzLg5xrP7uEKNW'),
+(27, 'Ricardo Montalban', 'ricardomontalban@gmail.com', '234567867890', 'cliente', '$2y$10$Dcom4lQDauFSD4yhsEAXlOd1Gwn8oevkEL2sm0oTH3Tz7gF6MgTDC'),
+(28, 'Sandra Reyes', 'sandrareyes@gmail.com', '1234567', 'mecanico', '$2y$10$Pba86JDkdqWoZTXGBeT9aucTtDtzY6AnfTaCvG4qfYvlLUcPNTFJy'),
+(29, 'Beto', 'beto@gmail.com', '1234567', 'cliente', '$2y$10$L4Ykm33esyxed05884lc8.o6IfZnZu8oje3vfX1S8C64pjC42Wo2m'),
+(30, 'Ricardo Omar G', 'ricardoom@gmail.com', '1234567', 'cliente', '$2y$10$VtozMTfNnDPRtJMH1ztvWOXH6QW.plJlmvMwjjeNWi3B8m1mWF8f2'),
+(31, 'Juan Sebastian Rojas Garcia', 'sebastianrg@gmail.com', '1234567', 'cliente', '$2y$10$V0WtWDN0QxBAx1Cj1aK/KeaS.aNGRwYgHnikF4XMIshqm2Asug4IG'),
+(32, 'RojasGarcia', 'rg@gmail.com', '1234567', 'mecanico', '$2y$10$1Fmsn/ylDFbY6PcKGKuDc.GH4eHKBawfLgHaXiWtgYyw1So160pbi');
 
 -- --------------------------------------------------------
 
@@ -413,7 +427,7 @@ ALTER TABLE `mantenimiento_repuesto`
 -- AUTO_INCREMENT de la tabla `mecanico`
 --
 ALTER TABLE `mecanico`
-  MODIFY `id_mecanico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_mecanico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `notificaciones`
@@ -425,7 +439,7 @@ ALTER TABLE `notificaciones`
 -- AUTO_INCREMENT de la tabla `propietario`
 --
 ALTER TABLE `propietario`
-  MODIFY `id_propietario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_propietario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de la tabla `repuesto`
@@ -455,7 +469,7 @@ ALTER TABLE `tipo_repuesto`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de la tabla `vehiculo`
