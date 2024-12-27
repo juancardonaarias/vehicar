@@ -1,6 +1,6 @@
 <?php
 
-require_once('classes/usuario.php');
+require_once('usuario.php');
 
 //require_once('..proyecto_mecanicapp/classes/Usuario.php');
 
@@ -35,6 +35,7 @@ if ($row['count'] > 0) {
     throw new Exception("El correo electrónico ya está registrado en la tabla usuarios.");
 }
 
+    
 
         // Inserta primero en usuarios
         $stmtUsuario = $conn->prepare("INSERT INTO usuarios (nombre_usuario, telefono, email, contrasena, tipo_usuario) VALUES (?, ?, ?, ?, ?)");

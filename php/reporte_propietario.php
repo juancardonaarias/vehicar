@@ -19,11 +19,15 @@ $nombre_propietario = $_GET['nombre_propietario'];
 
 // Consulta SQL para seleccionar el vehículo según la placa
 
-$sql = "SELECT p.id_propietario, p.nombre_propietario, p.telefono_propietario, 
-p.email_propietario, v.placa_vehiculo
-FROM `propietario` p 
-JOIN `vehiculo` v 
-ON p.id_propietario = v.id_propietario WHERE p.nombre_propietario = ?";
+$sql = "SELECT p.id_propietario, 
+               u.nombre_usuario AS nombre_propietario, 
+               u.telefono AS telefono_propietario, 
+               u.email AS email_propietario, 
+               v.placa_vehiculo
+        FROM `propietario` p
+        JOIN `usuarios` u ON p.id_usuario = u.id_usuario
+        JOIN `vehiculo` v ON p.id_propietario = v.id_propietario
+        WHERE u.nombre_usuario = ?";
 
 /*$sql = "SELECT * FROM propietario WHERE id_propietario = ?";*/
 

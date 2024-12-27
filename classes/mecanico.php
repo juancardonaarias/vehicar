@@ -8,6 +8,7 @@
 
            public $idMecanico = null;
            public $id_usuario = null;
+           public $id_taller = null;
            public $nombre_mecanico;  // Agregado
            public $telefono_mecanico; // Agregado
            public $email;  // Agregado
@@ -37,8 +38,8 @@
             $idUsuario = $stmtUsuario->insert_id; // Obtiene el ID generado
     
             // Inserta en mecanico con el id_usuario y id_taller
-            $stmtMecanico = $conn->prepare("INSERT INTO mecanico (id_usuario) VALUES (?)");
-            $stmtMecanico->bind_param("i", $idUsuario);
+            $stmtMecanico = $conn->prepare("INSERT INTO mecanico (id_usuario, id_taller) VALUES (?, ?)");
+            $stmtMecanico->bind_param("ii", $idUsuario,$this->id_taller);
     
             if ($stmtMecanico->execute()) {
                 return true;

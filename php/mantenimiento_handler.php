@@ -31,7 +31,10 @@ $result = $mantenimiento->registrarMantenimiento($conn);
 
 // Verifica el resultado y muestra un mensaje
 if ($result) {
-    echo "Mantenimiento registrado correctamente con ID: $result";
+        // Verificar si hay página anterior
+        $previousPage = $_SERVER['HTTP_REFERER'] ?? 'menu.php';
+        header("Location: $previousPage");
+        die();
 } else {
     echo "Error al registrar el mantenimiento.";
 }

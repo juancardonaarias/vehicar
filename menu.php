@@ -33,7 +33,7 @@ $tipoUsuario = $_SESSION['tipo_usuario'];
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-section="propietario-form">Cliente</a>
                     </li>
-				<?php endif; ?>
+				<?php endif;?>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#" data-section="vehiculo-form">Vehículo</a>
                     </li>
@@ -58,7 +58,7 @@ $tipoUsuario = $_SESSION['tipo_usuario'];
                     </li>
  
                     <li class="nav-item">
-                        <a class="nav-link text-danger" href="logout.php">Salir</a>
+                        <a class="text-danger" href="logout.php">Salir</a>
                     </li>
                 </ul>
             </div>
@@ -176,6 +176,10 @@ $tipoUsuario = $_SESSION['tipo_usuario'];
                         <label for="email_propietario" class="form-label">Email:</label>
                         <input type="email" class="form-control" id="email_propietario" name="email_propietario" required>
                     </div>
+                    <div class="mb-3">
+                        <label for="contrasena_propietario" class="form-label">Contraseña:</label>
+                        <input type="text" class="form-control" id="contrasena_propietario" name="contrasena_propietario" required>
+                    </div>
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </form>
                 <div id="response-message" class="mt-3"></div>
@@ -196,6 +200,14 @@ $tipoUsuario = $_SESSION['tipo_usuario'];
                         <input type="tel" class="form-control" id="telefono_mecanico" name="telefono_mecanico" required>
                     </div>
 
+                    <div class="mb-3">
+                        <label for="email_mecanico" class="form-label">Email:</label>
+                        <input type="email" class="form-control" id="email_mecanico" name="email_mecanico" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contrasena_mecanico" class="form-label">Contraseña:</label>
+                        <input type="text" class="form-control" id="contrasena_mecanico" name="contrasena_mecanico" required>
+                    </div>
                     <div class="mb-3">
                         <label for="id_taller" class="form-label">Seleccione Taller:</label>
                         <select id="id_taller" name="id_taller"  class="form-select"  required>
@@ -318,6 +330,16 @@ $tipoUsuario = $_SESSION['tipo_usuario'];
                 </form>
             </div>
     
+            <div id="reporte-vehiculo" class="form-section">
+                <h2>Consulta por Vehiculo</h2>
+                <form action="php/reporte_vehiculo.php" method="GET">
+                   <div class="mb-3">
+                        <label for="placa_vehiculo" class="form-label">Placa del Vehiculo:</label>
+                        <input type="text" name="placa_vehiculo" id="placa_vehiculo">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Generar Reporte</button>
+                </form>
+            </div>
           
 
             

@@ -1,7 +1,23 @@
 <?php
 require_once '../config/conexion.php';
 
-$sql = "SELECT id_propietario, nombre_propietario FROM propietario";
+// Preparar la consulta SQL
+$sql = "
+    SELECT 
+        propietario.id_propietario, 
+        usuarios.id_usuario, 
+        usuarios.nombre_usuario AS nombre_propietario
+    FROM 
+        usuarios 
+    JOIN 
+        propietario 
+    ON 
+        usuarios.id_usuario = propietario.id_usuario
+    WHERE 
+        usuarios.tipo_usuario = 'cliente'
+";
+
+
 $result = $conn->query($sql);
 
 $propietarios = [];

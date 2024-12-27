@@ -1,6 +1,6 @@
 <?php
 include 'config/conexion.php';
-include 'classes/Propietario.php';
+include 'classes/propietario.php';
 include 'classes/Mecanico.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

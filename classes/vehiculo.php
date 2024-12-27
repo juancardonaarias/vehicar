@@ -13,7 +13,7 @@ class Vehiculo
 
     public function ingresarVehiculo($conexion)
     {
-        $stmt = $conexion->prepare("INSERT INTO vehiculo (marca_vehiculo,modelo_vehiculo,placa_vehiculo,id_propietario) VALUES (?, ?, ?,?)");
+        $stmt = $conexion->prepare("INSERT INTO vehiculo (marca_vehiculo,modelo_vehiculo,placa_vehiculo, id_propietario) VALUES (?, ?, ?,?)");
         $stmt->bind_param("sssi", $this->marcaVehiculo, $this->modeloVehiculo, $this->placaVehiculo,$this->idPropietario);
         return $stmt->execute();
     }
