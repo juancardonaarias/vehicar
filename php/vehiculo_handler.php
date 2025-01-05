@@ -18,6 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($vehiculo->ingresarVehiculo($conn)) {
         echo json_encode(['success' => true, 'message' => 'Vehículo registrado correctamente.']);
+        header("location: ../menu.php");
     } else {
         echo json_encode(['success' => false, 'message' => 'Error al registrar el vehículo.']);
     }

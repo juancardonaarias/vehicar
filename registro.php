@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($mecanico->registrarMecanico($conn)) {
             echo "<script>
                     alert('Mecánico registrado con éxito.');
-                    window.location.href = 'login.html';
+                    window.location.href = 'iniciosesion.html';
                   </script>";
         } else {
             echo "<script>

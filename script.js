@@ -88,7 +88,19 @@ fetch('php/get_ciudades.php')
         });
     });
 
+//Cargar opciones de propietarios para notificaciones
 
+ fetch('php/get_propietarios.php')
+ .then(response => response.json())
+ .then(data => {
+     const propietarioSelect = document.getElementById('notificaciones');
+     data.forEach(propietario => {
+         const option = document.createElement('option');
+         option.value = propietario.id_propietario;
+         option.textContent = propietario.nombre_propietario;
+         propietarioSelect.appendChild(option);
+     });
+ });
 
     //Cargar opciones de tipo de mantenimiento
     fetch('php/get_tipomantenimiento.php')

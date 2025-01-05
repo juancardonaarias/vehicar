@@ -2,6 +2,7 @@
 require_once('../config/conexion.php');
 require_once('../classes/propietario.php');
 
+session_start(); // Iniciar sesión para almacenar mensajes temporales
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nombre = $_POST['nombre_propietario'];
@@ -16,13 +17,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $propietario->contrasena = $contrasena;
 
     if ($propietario->agregarPropietario($conn)) {
-        // Verificar si hay página anterior
+        // Almacenar mensaje en sesión
+        $_SESSION['mensaje'] = "Cliente guardado con éxito.";
+        $_SESSION['tipo_mensaje'] = "success"; // Tipo de mensaje (success, error, etc.)
+
+        // Redirigir a la página anterior o al menú
         $previousPage = $_SERVER['HTTP_REFERER'] ?? 'menu.php';
         header("Location: $previousPage");
-        die();
-       
+        exit(); // Finaliza la ejecución del script
     } else {
-        echo json_encode(['success' => false, 'message' => 'Error al registrar el propietario.']);
+        // Almacenar mensaje de error en sesión
+        $_SESSION['mensaje'] = "Error al registrar el propietario.";
+        $_SESSION['tipo_mensaje'] = "error";
+
+        // Redirigir a la página anterior
+        $previousPage = $_SERVER['HTTP_REFERER'] ?? 'menu.php';
+        header("Location: $previousPage");
+        exit();
     }
 }
 ?>
+

@@ -330,7 +330,8 @@ $tipoUsuario = $_SESSION['tipo_usuario'];
                 </form>
             </div>
     
-            <div id="reporte-vehiculo" class="form-section">
+          
+           <div id="reporte-vehiculo" class="form-section">
                 <h2>Consulta por Vehiculo</h2>
                 <form action="php/reporte_vehiculo.php" method="GET">
                    <div class="mb-3">
@@ -339,9 +340,7 @@ $tipoUsuario = $_SESSION['tipo_usuario'];
                     </div>
                     <button type="submit" class="btn btn-primary">Generar Reporte</button>
                 </form>
-            </div>
-          
-
+           </div>
             
 
         </div>
