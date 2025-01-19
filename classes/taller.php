@@ -16,8 +16,6 @@
                 $stmt = $conn->prepare($sql);
                 $stmt->bind_param("ssii",$this->nombreTaller, $this->direccionTaller,$this->id_ciudad,$this->id_departamento);
                 return $stmt->execute(); 
-        
-
             }
 
             public function consultarTaller($conn) {

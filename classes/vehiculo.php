@@ -9,13 +9,14 @@ class Vehiculo
     public $marcaVehiculo = null;
     public $modeloVehiculo = null;
     public $idPropietario = null;
-   // public $kilometraje = null;
+   
 
     public function ingresarVehiculo($conexion)
     {
         $stmt = $conexion->prepare("INSERT INTO vehiculo (marca_vehiculo,modelo_vehiculo,placa_vehiculo, id_propietario) VALUES (?, ?, ?,?)");
         $stmt->bind_param("sssi", $this->marcaVehiculo, $this->modeloVehiculo, $this->placaVehiculo,$this->idPropietario);
         return $stmt->execute();
+        
     }
 
     public function consultarVehiculo($conexion, $idVehiculo)

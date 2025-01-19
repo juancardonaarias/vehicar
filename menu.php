@@ -176,10 +176,10 @@ $tipoUsuario = $_SESSION['tipo_usuario'];
                         <label for="email_propietario" class="form-label">Email:</label>
                         <input type="email" class="form-control" id="email_propietario" name="email_propietario" required>
                     </div>
-                    <div class="mb-3">
+                  <!--  <div class="mb-3">
                         <label for="contrasena_propietario" class="form-label">Contraseña:</label>
                         <input type="text" class="form-control" id="contrasena_propietario" name="contrasena_propietario" required>
-                    </div>
+                    </div> -->
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </form>
                 <div id="response-message" class="mt-3"></div>
@@ -204,10 +204,12 @@ $tipoUsuario = $_SESSION['tipo_usuario'];
                         <label for="email_mecanico" class="form-label">Email:</label>
                         <input type="email" class="form-control" id="email_mecanico" name="email_mecanico" required>
                     </div>
-                    <div class="mb-3">
+
+                 <!--   <div class="mb-3">
                         <label for="contrasena_mecanico" class="form-label">Contraseña:</label>
                         <input type="text" class="form-control" id="contrasena_mecanico" name="contrasena_mecanico" required>
                     </div>
+                -->   
                     <div class="mb-3">
                         <label for="id_taller" class="form-label">Seleccione Taller:</label>
                         <select id="id_taller" name="id_taller"  class="form-select"  required>
@@ -310,17 +312,16 @@ $tipoUsuario = $_SESSION['tipo_usuario'];
             <div id="reportes-form" class="form-section active">
                 <h2>Reportes</h2>
                 <div>
-                    <a href="#" class="nav-link" data-section="reporte-propietario">Reporte por Propietario</a>
-                    <a href="#" class="nav-link" data-section="reporte-vehiculo">Reporte por Vehículo</a>
+                    <a href="#" class="nav-link" data-section="reporte-propietario">Buscar por Propietario</a>
+                    <a href="#" class="nav-link" data-section="reporte-vehiculo">Buscar por Vehículo</a>
+                    <a href="#" class="nav-link" data-section="listar-propietarios">Listar Propietarios</a>
                 </div>
             </div>
 
             
-
-            
     
             <div id="reporte-propietario" class="form-section">
-                <h2>Consulta por Propietario</h2>
+                <h2>Buscar por Propietario</h2>
                 <form action="php/reporte_propietario.php" method="GET">
                    <div class="mb-3">
                         <label for="nombre_propietario" class="form-label">Seleccione Propietario:</label>
@@ -332,16 +333,23 @@ $tipoUsuario = $_SESSION['tipo_usuario'];
     
           
            <div id="reporte-vehiculo" class="form-section">
-                <h2>Consulta por Vehiculo</h2>
+                <h2>Buscar por Vehiculo</h2>
                 <form action="php/reporte_vehiculo.php" method="GET">
                    <div class="mb-3">
                         <label for="placa_vehiculo" class="form-label">Placa del Vehiculo:</label>
                         <input type="text" name="placa_vehiculo" id="placa_vehiculo">
                     </div>
-                    <button type="submit" class="btn btn-primary">Generar Reporte</button>
+                    <button type="submit" class="btn btn-primary">Buscar Vehiculo</button>
                 </form>
            </div>
             
+           <div id="listar-propietarios" class="form-section">
+                <h2>Listar Propietarios</h2>
+                <form action="php/listar_propietarios.php" method="GET">
+                   
+                    <button type="submit" class="btn btn-primary">Listar Propietarios</button>
+                </form>
+           </div>
 
         </div>
         

@@ -12,7 +12,7 @@
            public $nombre_mecanico;  // Agregado
            public $telefono_mecanico; // Agregado
            public $email;  // Agregado
-           public $contrasena;  // Agregado
+         //  public $contrasena;  // Agregado
 
 
     public function registrarMecanico($conn) {
@@ -42,14 +42,30 @@
             $stmtMecanico->bind_param("ii", $idUsuario,$this->id_taller);
     
             if ($stmtMecanico->execute()) {
-                return true;
+                echo "<script>
+                alert('Mecánico registrado con éxito');
+                window.location.href = '../menu.php';
+                </script>";
+                exit;
+               /* return true;
+                echo "Mecanico registrado con exito";*/
             } else {
                 error_log("Error al registrar en mecanico: " . $stmtMecanico->error);
-                return false;
+                echo "<script>
+                alert('Error al registrar el mecánico. Intenta nuevamente.');
+                window.history.back(); // Regresa a la página anterior
+              </script>";
+              exit;
+                //return false;
             }
         } else {
             error_log("Error al registrar en usuarios: " . $stmtUsuario->error);
-            return false;
+            echo "<script>
+            alert('Error al registrar el usuario. Intenta nuevamente.');
+            window.history.back(); // Regresa a la página anterior
+            </script>";
+            exit;
+            //return false;
         }
     }
     

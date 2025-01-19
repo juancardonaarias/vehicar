@@ -8,13 +8,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $telefono_mecanico = $_POST['telefono_mecanico'];
     $id_taller=$_POST['id_taller'];
     $email = $_POST['email_mecanico'];
-    $contrasena = password_hash($_POST['contrasena_mecanico'], PASSWORD_DEFAULT);
+    //$contrasena = password_hash($_POST['contrasena_mecanico'], PASSWORD_DEFAULT);
 
         $mecanico = new Mecanico();
         $mecanico->nombre_mecanico = $nombre_mecanico;
         $mecanico->telefono_mecanico = $telefono_mecanico;
         $mecanico->email = $email;
-        $mecanico->contrasena = $contrasena;
+      //  $mecanico->contrasena = $contrasena;
         $mecanico->id_taller = $id_taller;
         
 

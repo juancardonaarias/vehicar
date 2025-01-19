@@ -11,7 +11,7 @@ class Propietario extends Usuario
     public $nombre;
     public $telefono;
     public $email; // Declaración de propiedad
-    public $contrasena; // Declaración de propiedad
+   // public $contrasena; // Declaración de propiedad
 
 
     
@@ -38,9 +38,9 @@ if ($row['count'] > 0) {
     
 
         // Inserta primero en usuarios
-        $stmtUsuario = $conn->prepare("INSERT INTO usuarios (nombre_usuario, telefono, email, contrasena, tipo_usuario) VALUES (?, ?, ?, ?, ?)");
+        $stmtUsuario = $conn->prepare("INSERT INTO usuarios (nombre_usuario, telefono, email, tipo_usuario) VALUES (?, ?, ?, ?)");
         $tipoUsuario = 'cliente';
-        $stmtUsuario->bind_param("sssss", $this->nombre, $this->telefono, $this->email, $this->contrasena, $tipoUsuario);
+        $stmtUsuario->bind_param("ssss", $this->nombre, $this->telefono, $this->email, /*$this->contrasena*/ $tipoUsuario);
     
         if ($stmtUsuario->execute()) {
             $idUsuario = $stmtUsuario->insert_id; // Obtiene el ID generado
@@ -50,14 +50,27 @@ if ($row['count'] > 0) {
             $stmtPropietario->bind_param("i", $idUsuario);
     
             if ($stmtPropietario->execute()) {
-                return true;
+                echo "<script>
+                alert('Propietario o Cliente registrado con éxito');
+                window.location.href = '../menu.php';
+                </script>";
+                exit; // Asegura que no se ejecuten más instrucciones después de la redirección 
+                
             } else {
                 error_log("Error al registrar en propietario: " . $stmtPropietario->error);
-                return false;
+                echo "<script>
+                alert('Error al registrar el propietario o cliente. Intenta nuevamente.');
+                window.history.back(); // Regresa a la página anterior
+                </script>";
+                exit;
             }
         } else {
             error_log("Error al registrar en usuarios: " . $stmtUsuario->error);
-            return false;
+            echo "<script>
+            alert('Error al registrar el usuario. Intenta nuevamente.');
+            window.history.back(); // Regresa a la página anterior
+            </script>";
+            exit;
         }
     }
     

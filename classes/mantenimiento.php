@@ -12,7 +12,7 @@ class Mantenimiento {
         // Inserta el mantenimiento en la tabla 'mantenimiento'
         $stmt = $conn->prepare("INSERT INTO mantenimiento (id_vehiculo, id_mecanico, id_tipomanto, fecha_mantenimiento, descripcion, kilometraje) VALUES (?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("iiissi", $this->id_vehiculo, $this->id_mecanico, $this->id_tipomanto, $this->fecha_mantenimiento, $this->descripcion, $this->kilometraje);
-
+        
         if ($stmt->execute()) {
             // Obtiene el ID del mantenimiento recién insertado
             $mantenimiento_id = $stmt->insert_id;

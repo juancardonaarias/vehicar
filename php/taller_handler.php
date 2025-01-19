@@ -18,8 +18,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
 
     if ($taller->registrarTaller($conn)) {
-        echo json_encode(['success' => true, 'message' => 'Taller registrado correctamente.']);
-        
+        echo "<script>
+                alert('Taller registrado con éxito');
+                window.location.href = '../menu.php';
+              </script>";
+        exit;
+        // echo json_encode(['success' => true, 'message' => 'Taller registrado correctamente.']);
+
     } else {
         echo json_encode(['success' => false, 'message' => 'Error al registrar el Taller.']);
     }

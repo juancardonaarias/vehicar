@@ -8,13 +8,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nombre = $_POST['nombre_propietario'];
     $telefono = $_POST['telefono_propietario'];
     $email = $_POST['email_propietario'];
-    $contrasena = password_hash($_POST['contrasena_propietario'], PASSWORD_DEFAULT);
+  //  $contrasena = password_hash($_POST['contrasena_propietario'], PASSWORD_DEFAULT);
 
     $propietario = new Propietario();
     $propietario->nombre = $nombre;
     $propietario->telefono = $telefono;
     $propietario->email = $email;
-    $propietario->contrasena = $contrasena;
+//  $propietario->contrasena = $contrasena;
 
     if ($propietario->agregarPropietario($conn)) {
         // Almacenar mensaje en sesión

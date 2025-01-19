@@ -18,7 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
 
     if ($repuesto->agregar_Repuesto($conn)) {
-        echo json_encode(['success' => true, 'message' => 'Repuesto registrado correctamente.']);
+        echo "<script>
+                alert('Repuesto registrado con exito');
+                window.location.href = '../menu.php';
+              </script>";
     } else {
         echo json_encode(['success' => false, 'message' => 'Error al registrar el Repuesto.']);
     }

@@ -15,7 +15,12 @@
 require_once '../config/conexion.php';
 
 // Obtener nombre del propietario del vehículo desde el parámetro GET
-$nombre_propietario = $_GET['nombre_propietario'];
+$nombre_propietario = isset($_GET['nombre_propietario']) ? $_GET['nombre_propietario'] : null;
+
+if (!$nombre_propietario) {
+    echo '<div class="alert alert-danger text-center">Error: No se ha proporcionado un nombre de propietario.</div>';
+    exit;
+}
 
 // Consulta SQL para seleccionar el vehículo según la placa
 
@@ -76,6 +81,9 @@ if ($stmt) {
                   <a href="consulta_vehiculo.php?placa_vehiculo=' . urlencode($row['placa_vehiculo']) . '">
                 ' . $row['placa_vehiculo'] . '
                   </a>
+                </td>
+                <td>
+                    <a href="editar_cliente.php?id_propietario=' . $row['id_propietario'] . '" class="btn btn-warning">Editar</a>
                 </td>
             </tr>';
         }
