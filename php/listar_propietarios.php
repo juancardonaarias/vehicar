@@ -54,5 +54,15 @@ if (!$result) {
             </tbody>
         </table>
     </div>
+     
+    <div class="mt-4 text-center">
+                <a href="../menu.php" class="btn btn-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                        <path d="M6.5 14.5v-4h3v4a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1ZM13 7.293l-6-6-6 6V13a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1V9a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4h1a1 1 0 0 0 1-1V7.293Z"/>
+                    </svg>
+                    Volver al Menú Principal
+                </a>
+    </div>;
+
 </body>
 </html>
