@@ -205,11 +205,11 @@ $tipoUsuario = $_SESSION['tipo_usuario'];
                         <input type="email" class="form-control" id="email_mecanico" name="email_mecanico" required>
                     </div>
 
-                 <!--   <div class="mb-3">
+                 <div class="mb-3">
                         <label for="contrasena_mecanico" class="form-label">Contraseña:</label>
                         <input type="text" class="form-control" id="contrasena_mecanico" name="contrasena_mecanico" required>
-                    </div>
-                -->   
+                 </div>
+                   
                     <div class="mb-3">
                         <label for="id_taller" class="form-label">Seleccione Taller:</label>
                         <select id="id_taller" name="id_taller"  class="form-select"  required>

@@ -15,7 +15,9 @@
 require_once '../config/conexion.php';
 
 // Obtener nombre del propietario del vehículo desde el parámetro GET
-$nombre_propietario = isset($_GET['nombre_propietario']) ? $_GET['nombre_propietario'] : null;
+// $nombre_propietario = isset($_GET['nombre_propietario']) ? $_GET['nombre_propietario'] : null;
+
+$nombre_propietario = isset($_GET['nombre_propietario']) ? '%' . $_GET['nombre_propietario'] . '%' : null;
 
 if (!$nombre_propietario) {
     echo '<div class="alert alert-danger text-center">Error: No se ha proporcionado un nombre de propietario.</div>';
@@ -31,8 +33,8 @@ $sql = "SELECT p.id_propietario,
                v.placa_vehiculo
         FROM `propietario` p
         JOIN `usuarios` u ON p.id_usuario = u.id_usuario
-        JOIN `vehiculo` v ON p.id_propietario = v.id_propietario
-        WHERE u.nombre_usuario = ?";
+        LEFT JOIN `vehiculo` v ON p.id_propietario = v.id_propietario
+        WHERE TRIM(u.nombre_usuario) LIKE ?";
 
 /*$sql = "SELECT * FROM propietario WHERE id_propietario = ?";*/
 
@@ -94,6 +96,18 @@ if ($stmt) {
                 </table>
             </div>
         </div>';
+
+         // Opcional: Botón al final de la tabla
+         echo '
+         <div class="mt-4 text-center">
+             <a href="../menu.php" class="btn btn-primary">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                     <path d="M6.5 14.5v-4h3v4a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1ZM13 7.293l-6-6-6 6V13a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1V9a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4h1a1 1 0 0 0 1-1V7.293Z"/>
+                 </svg>
+                 Volver al Menú Principal
+             </a>
+         </div>';
+
     } else {
         echo '<div class="alert alert-warning text-center">No se encontró ningún propietario con ese id.</div>';
     }
